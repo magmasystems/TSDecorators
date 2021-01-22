@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "target": "es6",
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "watch": false,
+        "outDir": "./dist",
+        "declaration": true,
+        "declarationDir": "./dist/typings",
+    },
+}
