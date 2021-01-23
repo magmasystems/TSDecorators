@@ -10,25 +10,21 @@ export function microservice<T extends { new(...args: any[]): {}; }>(constructor
     AppContext.MicroserviceMap.set(constructorFunction.name, constructorFunction);
     // console.log(constructorFunction);
 
-    let newConstructorFunction: any = function (...args) 
+    let newConstructorFunction: any = function (...args)
     {
-        console.log("before invoking: " + constructorFunction.name);
-        let func: any = function () 
+        let func: any = function ()
         {
             return new constructorFunction(...args);
         }
         func.prototype = constructorFunction.prototype;
-        let result: any = new func();
-        console.log("after invoking: " + constructorFunction.name);
-        console.log('object created: ' + JSON.stringify(result));
-        return result;
+        return new func();
     }
 
     newConstructorFunction.prototype = constructorFunction.prototype;
     return newConstructorFunction;
 }
 
-export function microservice2(): ClassDecorator 
+export function microservice2(): ClassDecorator
 {
     return (target: Function) => {
         // console.log("Microservice2: target " + target);
